@@ -7,8 +7,8 @@ const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin');
 module.exports = {
   entry: './src/assets/scripts/theme.js',
   output: {
-    path: path.resolve(__dirname, './dist/assets'), // outputs bundled .js and .scss.liquid into shopify's assets folder
-    filename: 'theme-webpack.js'
+    path: path.resolve(__dirname, './src/assets'), // outputs bundled .js and .scss.liquid into shopify's assets folder
+    filename: 'theme.js'
   },
   optimization: {
     minimizer: [
@@ -47,7 +47,7 @@ module.exports = {
   },
   plugins: [
     new MiniCssExtractPlugin({
-      filename: "theme-webpack.scss.liquid"
+      filename: "theme.scss.liquid"
     }),
     new UglifyJSPlugin()
   ],
