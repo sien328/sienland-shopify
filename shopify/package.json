@@ -1,0 +1,33 @@
+{
+  "name": "Sienland",
+  "version": "1.0.0",
+  "author": "Sien Liu",
+  "description": "",
+  "scripts": {
+    "watch": "concurrently \"slate build\" \"webpack --watch --mode development\"",
+    "build": "webpack --mode production"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.11.0",
+    "babel": "^6.23.0",
+    "babel-core": "^6.26.3",
+    "babel-loader": "^8.1.0",
+    "babel-preset-env": "^1.7.0",
+    "babel-preset-shopify": "^20.1.0",
+    "concurrently": "^5.2.0",
+    "css-loader": "^4.2.0",
+    "lodash": "^4.17.19",
+    "mini-css-extract-plugin": "^0.9.0",
+    "node-sass": "^4.14.1",
+    "optimize-css-assets-webpack-plugin": "^5.0.3",
+    "path": "^0.12.7",
+    "sass": "^1.26.10",
+    "sass-loader": "^9.0.2",
+    "style-loader": "^1.2.1",
+    "terser-webpack-plugin": "^3.0.8",
+    "uglifyjs-webpack-plugin": "^2.2.0",
+    "webpack": "^4.44.1",
+    "webpack-cli": "^3.3.12"
+  },
+  "dependencies": {}
+}
