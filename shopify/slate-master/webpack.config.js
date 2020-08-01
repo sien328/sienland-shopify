@@ -5,7 +5,7 @@ const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin');
 
 module.exports = {
-  entry: './src/assets/scripts/theme.js',
+  entry: './src/scripts/theme.js',
   output: {
     path: path.resolve(__dirname, './src/assets'), // outputs bundled .js and .scss.liquid into shopify's assets folder
     filename: 'theme.js'
