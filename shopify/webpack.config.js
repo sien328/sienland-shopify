@@ -1,4 +1,5 @@
 const path = require('path');
+const FileManagerPlugin = require('filemanager-webpack-plugin');
 const TerserPlugin = require('terser-webpack-plugin');
 const UglifyJSPlugin = require('uglifyjs-webpack-plugin');
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
@@ -8,7 +9,7 @@ module.exports = {
   entry: './src/scripts/theme.js',
   output: {
     path: path.resolve(__dirname, './src/assets'), // outputs bundled .js and .scss.liquid into shopify's assets folder
-    filename: 'theme.js'
+    filename: 'theme.js',
   },
   optimization: {
     minimizer: [
@@ -47,9 +48,27 @@ module.exports = {
   },
   plugins: [
     new MiniCssExtractPlugin({
+      path: path.resolve(__dirname, './src/assets'),
       filename: "theme.scss.liquid"
     }),
-    new UglifyJSPlugin()
+    new UglifyJSPlugin(),
+    new FileManagerPlugin({
+      onStart: {
+        delete: ['./dist/**/*'], // clean dist
+      },
+      onEnd: {
+        mkdir: ['./dist'],
+        copy: [
+          { source: './src/assets', destination: './dist/assets' },
+          { source: './src/config', destination: './dist/config' },
+          { source: './src/layout', destination: './dist/layout' },
+          { source: './src/locales', destination: './dist/locales' },
+          { source: './src/sections', destination: './dist/sections' },
+          { source: './src/snippets', destination: './dist/snippets' },
+          { source: './src/templates', destination: './dist/templates' }
+        ],
+      }
+    })
   ],
   resolve: {
     extensions: ['.css', '.scss', '.sass', '.js', '.liquid']

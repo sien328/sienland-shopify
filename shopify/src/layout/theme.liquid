@@ -6,10 +6,11 @@
 </head>
 
 <body class="template-{{ request.page_type | handle }}">
-  {%- comment -%}\
-  {% section 'header' %}
+  {%- comment -%}
   {%- endcomment -%}
+  {% section 'header' %}
 
+  hello world 3
   <main class="main-content js-focus-hidden" id="MainContent" role="main" tabindex="-1">
     {{ content_for_layout }}
   </main>
