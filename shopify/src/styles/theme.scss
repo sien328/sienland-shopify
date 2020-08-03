@@ -5,11 +5,11 @@
 
 // Mixins
 @import 'global/mixins';
+@import 'global/helper.scss';
 
 // Globals
 @import 'global/normalize.scss';
 @import 'global/reset.scss';
-@import 'global/helper.scss';
 @import 'global/fonts.scss';
 @import 'global/icons.scss';
 
@@ -30,8 +30,3 @@
 @import 'pages/article';
 @import 'pages/search';
 @import 'pages/404';
-
-.testing{
-    color: purple;
-    background-color: red;
-}
