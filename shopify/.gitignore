@@ -12,8 +12,8 @@ dist
 upload
 deploy.log
 config.yml
-./assets/theme.js
-./assets/theme.scss.liquid
+main.js
+main.scss.liquid
 .env
 
 # Compiled source #

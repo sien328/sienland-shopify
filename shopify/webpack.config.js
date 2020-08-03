@@ -4,13 +4,12 @@ const TerserPlugin = require('terser-webpack-plugin');
 const UglifyJSPlugin = require('uglifyjs-webpack-plugin');
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin');
-const SpriteLoaderPlugin = require('svg-sprite-loader/plugin');
 
 module.exports = {
-  entry: 'src/scripts/theme.js',
+  entry: './src/scripts/theme.js',
   output: {
     path: path.resolve(__dirname, 'src/assets'), // outputs bundled .js and .scss.liquid into shopify's assets folder
-    filename: 'theme.js',
+    filename: 'main.js',
   },
   optimization: {
     minimizer: [
@@ -61,7 +60,7 @@ module.exports = {
   plugins: [
     new MiniCssExtractPlugin({
       path: path.resolve(__dirname, 'src/assets'),
-      filename: "theme.scss.liquid"
+      filename: "main.scss.liquid"
     }),
     new UglifyJSPlugin(),
     new FileManagerPlugin({
