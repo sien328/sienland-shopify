@@ -4,6 +4,7 @@ const TerserPlugin = require('terser-webpack-plugin');
 const UglifyJSPlugin = require('uglifyjs-webpack-plugin');
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin');
+const SpriteLoaderPlugin = require('svg-sprite-loader/plugin');
 
 module.exports = {
   entry: './src/scripts/theme.js',
@@ -45,7 +46,18 @@ module.exports = {
         ]
       },
       {
+        test: /\.svg$/, // your icons directory
+        loader: 'svg-sprite-loader',
+        include: path.resolve( __dirname, "./src/styles/icons"),
+        options: {
+          extract: true,
+          spriteFilename: 'icons.svg', // this is the destination of your sprite sheet
+          symbolId: "[name]"
+        }
+      },
+      {
         test: /\.(woff(2)?|ttf|eot|svg)(\?v=\d+\.\d+\.\d+)?$/,
+        include: path.resolve( __dirname, "./src/styles/fonts"),
         use: [
             {
                 loader: 'file-loader',
@@ -63,6 +75,9 @@ module.exports = {
       filename: "main.scss.liquid"
     }),
     new UglifyJSPlugin(),
+    new SpriteLoaderPlugin({
+      plainSprite: true 
+    }),
     new FileManagerPlugin({
       onStart: {
         delete: ['dist/**/*'], // clean dist

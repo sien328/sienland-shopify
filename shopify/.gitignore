@@ -14,6 +14,7 @@ deploy.log
 config.yml
 main.js
 main.scss.liquid
+icons.svg
 .env
 
 # Compiled source #
