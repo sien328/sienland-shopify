@@ -1,0 +1,36 @@
+$fontFamily-1: 'Roboto-Bold';
+$fontFamily-2: 'Roboto-Light';
+
+@include font-family-import($fontFamily-1,'');
+@include font-family-import($fontFamily-2,'');
+
+.base-font-1 { 
+    font-family: $fontFamily-1;
+    font-weight: normal;
+}
+.base-font-2 { 
+    // Poppins-Regular
+    font-family: $fontFamily-2;
+    font-weight: normal;
+}
+
+.title-font-1 {
+    @extend .base-font-1;
+    font-size: 36px;
+    @include query-large-up {
+        font-size: 46px;
+    } 
+}
+
+.copy-font-1 {
+    @extend .base-font-2;
+    font-size: 18px;
+    @include query-large-up {
+        font-size: 24px;
+    } 
+}
+
+.cta-font-1 {
+    @extend .base-font-2;
+    font-size: 20px;
+}

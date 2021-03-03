@@ -1,16 +1,15 @@
 const path = require('path');
 const FileManagerPlugin = require('filemanager-webpack-plugin');
 const TerserPlugin = require('terser-webpack-plugin');
-const UglifyJSPlugin = require('uglifyjs-webpack-plugin');
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin');
 const SpriteLoaderPlugin = require('svg-sprite-loader/plugin');
 
 module.exports = {
-  entry: './src/scripts/theme.js',
+  entry: { bundle: ['./src/scripts/theme.js', './src/styles/theme.scss'] },
   output: {
-    path: path.resolve(__dirname, 'src/assets'), // outputs bundled .js and .scss.liquid into shopify's assets folder
     filename: 'main.js',
+    path: path.resolve(__dirname, 'src/assets'), // outputs bundled .js and .scss.liquid into shopify's assets folder
   },
   optimization: {
     minimizer: [
@@ -71,32 +70,32 @@ module.exports = {
   },
   plugins: [
     new MiniCssExtractPlugin({
-      path: path.resolve(__dirname, 'src/assets'),
       filename: "main.scss.liquid"
     }),
-    new UglifyJSPlugin(),
     new SpriteLoaderPlugin({
       plainSprite: true 
     }),
     new FileManagerPlugin({
-      onStart: {
-        delete: ['dist/**/*'], // clean dist
-      },
-      onEnd: {
-        mkdir: ['dist'],
-        copy: [
-          { source: 'src/assets', destination: 'dist/assets' },
-          { source: 'src/config', destination: 'dist/config' },
-          { source: 'src/layout', destination: 'dist/layout' },
-          { source: 'src/locales', destination: 'dist/locales' },
-          { source: 'src/sections', destination: 'dist/sections' },
-          { source: 'src/snippets', destination: 'dist/snippets' },
-          { source: 'src/templates', destination: 'dist/templates' }
-        ],
+      events: {
+        onStart: {
+          delete: ['dist/**/*'], // clean dist
+        },
+        onEnd: {
+          mkdir: ['dist'],
+          copy: [
+            { source: 'src/assets', destination: 'dist/assets' },
+            { source: 'src/config', destination: 'dist/config' },
+            { source: 'src/layout', destination: 'dist/layout' },
+            { source: 'src/locales', destination: 'dist/locales' },
+            { source: 'src/sections', destination: 'dist/sections' },
+            { source: 'src/snippets', destination: 'dist/snippets' },
+            { source: 'src/templates', destination: 'dist/templates' }
+          ],
+        }
       }
     })
   ],
   resolve: {
-    extensions: ['.css', '.scss', '.js', '.liquid']
+    extensions: ['.scss', '.js', '.liquid']
   }
 };

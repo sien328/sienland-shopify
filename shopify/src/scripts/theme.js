@@ -1,5 +1,3 @@
-import '../styles/theme.scss';
-
 function requireAll(r) {
     r.keys().forEach(r);
   }
