@@ -1,0 +1,76 @@
+{% schema %}
+{
+    "name": "Carousel",
+    "settings": [
+        {
+            "type": "text",
+            "id": "section_title",
+            "label": "Section Title"
+        }
+    ],
+    "blocks": [
+        {
+            "name": "Slide",
+            "type": "slide",
+            "settings": [
+                {
+                    "type": "image_picker",
+                    "id": "image",
+                    "label": "Image"
+                },
+                {
+                    "type": "text",
+                    "id": "header_text",
+                    "label": "Header Text"
+                },
+                {
+                    "type": "textarea",
+                    "id": "body_text",
+                    "label": "Body Text"
+                },
+                {
+                    "type": "text",
+                    "id": "cta_text",
+                    "label": "CTA Text"
+                },
+                {
+                    "id": "cta_url",
+                    "type": "url",
+                    "label": "CTA URL"
+                }
+            ]
+        }
+    ],
+    "presets": [
+        {
+            "name": "Homepage Carousel",
+            "category": "Homepage",
+            "settings": {
+
+            }
+        }
+    ]
+}
+{% endschema %}
+
+<section class="home-carousel">
+    <div class="splide">
+        <div class="splide__track">
+            <div class="splide__list">
+                {% for block in section.blocks %}
+                    <div class="splide__slide">
+                        <div class="content" style="background-image: url({{ block.settings.image.src | img_url: '600x' }});">
+                            <h3 class="header-text">{{block.settings.header_text}}</h3>
+                            <div class="body-text">{{block.settings.body_text}}</div>
+                            {% if block.settings.cta_text != blank and block.settings.cta_url != blank%}
+                                <a class="cta" href="{{block.settings.cta_url}}">
+                                    {{block.settings.cta_text}}
+                                </a>
+                            {% endif %}
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+</section>

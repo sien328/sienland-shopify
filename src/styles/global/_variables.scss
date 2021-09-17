@@ -1,0 +1,15 @@
+$isUsingWebpack: true; 
+$fontPath: '../styles/fonts/Roboto/';
+
+/* Dimensions */
+    // Medium Screens
+    $mediumScreen: 768px;
+
+    // Large Screens
+    $largeScreen: 1025px;
+    $xLargeScreen: 1200px;
+    $xxLargeScreen: 1440px;
+
+    // Constraints
+    $min: min-width;
+    $max: max-width;

@@ -1,0 +1,39 @@
+{
+  "name": "Sienland",
+  "version": "1.0.0",
+  "author": "Sien Liu",
+  "description": "",
+  "scripts": {
+    "watch": "concurrently \"theme watch --dir src\" \"webpack --watch --mode development\" --names \"theme,webpack\" --prefix-colors \"cyan,blue\"",
+    "build": "webpack --mode production",
+    "deploy": "webpack --mode production && theme deploy --dir dist"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.11.0",
+    "babel": "^6.23.0",
+    "babel-core": "^6.26.3",
+    "babel-loader": "^8.1.0",
+    "babel-preset-env": "^1.7.0",
+    "babel-preset-shopify": "^20.1.0",
+    "concurrently": "^5.3.0",
+    "css-loader": "^4.2.0",
+    "file-loader": "^6.0.0",
+    "filemanager-webpack-plugin": "^3.1.0",
+    "mini-css-extract-plugin": "^0.9.0",
+    "node-sass": "^4.14.1",
+    "optimize-css-assets-webpack-plugin": "^5.0.3",
+    "path": "^0.12.7",
+    "sass": "^1.26.10",
+    "sass-loader": "^9.0.2",
+    "style-loader": "^1.2.1",
+    "svg-sprite-loader": "^5.0.0",
+    "terser-webpack-plugin": "^3.0.8",
+    "uglifyjs-webpack-plugin": "^1.1.2",
+    "vue": "^2.6.11",
+    "webpack": "^4.44.1",
+    "webpack-cli": "^3.3.12"
+  },
+  "dependencies": {
+    "@splidejs/splide": "^2.4.21"
+  }
+}

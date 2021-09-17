@@ -1,0 +1,17 @@
+<!doctype html>
+<html class="no-js" lang="{{ shop.locale }}">
+<head>
+  {% include 'head' %}
+  {{ content_for_header }}
+</head>
+
+<body class="template-{{ request.page_type | handle }}">
+  <div id="app">
+    {% section 'header' %}
+    <main id="MainContent" role="main" tabindex="-1">
+      {{ content_for_layout }}
+    </main>
+    {% include 'footer' %}
+  </div>
+</body>
+</html>
