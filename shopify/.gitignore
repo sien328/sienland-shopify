@@ -63,5 +63,3 @@ _site
 secrets.json
 .jekyll-metadata
 .ruby-version
-.DS_Store
-.DS_store
